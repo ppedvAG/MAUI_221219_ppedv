@@ -53,9 +53,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="M04_Controls.xaml.cs">
+	    <DependentUpon>M04_Controls.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="M03_Xaml-Grundlagen.xaml.cs">
 	    <DependentUpon>M03_Xaml-Grundlagen.xaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="M04_Controls.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
