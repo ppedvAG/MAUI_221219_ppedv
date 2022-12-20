@@ -5,6 +5,8 @@ public partial class Controls : ContentPage
 	public Controls()
 	{
 		InitializeComponent();
+
+       
     }
 
     //Eventhandler des Button.Clicked-Event
@@ -12,6 +14,9 @@ public partial class Controls : ContentPage
     {
         //Verwendung des sender-Parameters (enthält Event-auslösendes Objekt; hier Button)
         (sender as Button).Text = "Clicked";
+
+        Window secWnd = new Window(new XamlGrundlagen());
+        Application.Current.OpenWindow(secWnd);
     }
 
     private async void ImageButton_Clicked(object sender, EventArgs e)

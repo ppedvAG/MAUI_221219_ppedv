@@ -5,7 +5,10 @@ public partial class Pg_AddPerson : ContentPage
 	public Pg_AddPerson()
 	{
 		InitializeComponent();
-	}
+
+        this.Loaded += (s, e) => Ety_Name.Focus();
+
+    }
 
     #region Lab03
     //private void Btn_ClickMe_Clicked(object sender, EventArgs e)
