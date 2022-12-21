@@ -59,13 +59,16 @@
 	  <Compile Update="M03_Xaml-Grundlagen.xaml.cs">
 	    <DependentUpon>M03_Xaml-Grundlagen.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="M05_Layouts.xaml.cs">
+	    <DependentUpon>M05_Layouts.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="M04_Controls.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="NewPage1.xaml">
+	  <MauiXaml Update="M05_Layouts.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
