@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Personendatenbank.Model"
+             xmlns:conv="clr-namespace:Personendatenbank.Converter"
+             x:Class="Personendatenbank.Pages.Pg_ListPerson"
+             Title="Personenübersicht">
+    
+    <ContentPage.Resources>
+        <conv:BoolToVerheiratetStringConverter x:Key="bool2string"/>
+    </ContentPage.Resources>
+
+
+    <StackLayout Padding="5"
+                 Spacing="10">
+        <Border StrokeThickness="1"
+                VerticalOptions="FillAndExpand">
+            
+            <Border.Stroke>
+                <SolidColorBrush Color="Black"/>
+            </Border.Stroke>
+
+            <ListView x:Name="LstV_Personen"
+                      SeparatorColor="Black">
+
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type model:Person}">
+                        <model:Person Name="Anna Nass" IsMarried="True" Gender="Weiblich" Birthdate="12/22/2001"/>
+                        <model:Person Name="Rainer Zufall" IsMarried="False" Gender="Männlich" Birthdate="4/12/1980"/>
+                    </x:Array>
+                </ListView.ItemsSource>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>                            
+                            <StackLayout Padding="10">
+                                <StackLayout.Resources>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Margin" Value="5,0"/>
+                                        <Setter Property="FontSize" Value="15"/>
+                                    </Style>
+                                </StackLayout.Resources>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Name}"/>
+                                    <Label Text="{Binding Gender, StringFormat='({0})'}"/>
+                                </StackLayout>
+                                <Label Text="{Binding Birthdate, StringFormat='Geboren am {0:dd.MM.yyyy}'}"/>
+                                <Label Text="{Binding IsMarried, Converter={StaticResource bool2string}}"/>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Border>
+        <Button Text="Person löschen"
+                x:Name="Btn_Loeschen"/>
+    </StackLayout>
+</ContentPage>

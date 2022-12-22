@@ -11,7 +11,7 @@ public partial class NavPageBsp : ContentPage
     {
         //Mittels PushAsync kann innerhalb einer NavigatinPage zu der nächsten Seite navigiert werden.
         //Vorherige Pages werden für die Back-Navigation auf den NavigationStack gelegt.
-        Navigation.PushAsync(new Grundlagen());
+        Navigation.PushAsync(new XamlGrundlagen());
     }
 
     private void Btn_Controls_Clicked(object sender, EventArgs e)

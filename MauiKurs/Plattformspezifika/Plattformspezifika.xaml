@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiKurs.Plattformspezifika.Plattformspezifika"
+             Title="Plattformspezifika">
+    
+    <OnPlatform x:TypeArguments="View">
+        <On Platform="WinUI">
+            <On.Value>
+                <VerticalStackLayout>
+                    <Label Text="{OnPlatform Android=ANDROID, WinUI=WINUI, Default=DEFAULT}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               BackgroundColor="{OnIdiom Desktop=Blue, Phone=Green, Default=HotPink}"/>
+
+                    <Label x:Name="Lbl_Orientation"/>
+                </VerticalStackLayout>
+            </On.Value>
+        </On>
+
+        <On Platform="Android">
+            <On.Value>
+                <StackLayout>
+                    <Label Text="Test"/>
+                    <Label x:Name="Lbl_Orientation02"/>
+                </StackLayout>
+            </On.Value>
+        </On>
+    </OnPlatform>
+
+</ContentPage>

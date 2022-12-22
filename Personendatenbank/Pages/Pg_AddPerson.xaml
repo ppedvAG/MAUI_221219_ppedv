@@ -4,7 +4,7 @@
              xmlns:conv="clr-namespace:Personendatenbank.Converter"
              xmlns:model="clr-namespace:Personendatenbank.Model"
              x:Class="Personendatenbank.Pages.Pg_AddPerson"
-             Title="Pg_AddPerson">
+             Title="Neue Person">
     
     <!--#region Lab 03-->
     <!--<StackLayout Orientation="Vertical">
@@ -213,7 +213,7 @@
         <conv:GenderToIndexConverter x:Key="gender2index"/>
     </ContentPage.Resources>
 
-    <VerticalStackLayout Margin="10"
+    <StackLayout Margin="10"
                          Spacing="15">
 
         <Label x:Name="Lbl_Header"
@@ -227,7 +227,8 @@
               RowSpacing="5"
               Padding="10"
               ColumnDefinitions="Auto,*"
-              RowDefinitions="*,*,Auto,*">
+              RowDefinitions="Auto,Auto,Auto,*"
+              VerticalOptions="StartAndExpand">
 
             <Label x:Name="Lbl_Name"
                    Text="Name:"/>
@@ -277,7 +278,7 @@
                     Text="Hinzufügen/Ändern"
                     Clicked="Btn_Add_Clicked"/>
 
-    </VerticalStackLayout>
+    </StackLayout>
     <!--#endregion-->
 
 </ContentPage>

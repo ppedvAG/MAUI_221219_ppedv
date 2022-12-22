@@ -49,6 +49,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\add.png" />
+	  <None Remove="Resources\Images\ppedv.bmp" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
@@ -61,6 +66,9 @@
 	  </Compile>
 	  <Compile Update="M05_Layouts.xaml.cs">
 	    <DependentUpon>M05_Layouts.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Platforms\Windows\DeviceOrientationService.cs">
+	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
 	  </Compile>
 	</ItemGroup>
 
@@ -96,6 +104,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="M08_Navi\TabbedPageBsp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Plattformspezifika\Plattformspezifika.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
