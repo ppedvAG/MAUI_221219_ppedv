@@ -19,4 +19,13 @@ public partial class NavPageBsp : ContentPage
         //Modal-Pushes verhindern die Anzeige von Titelleiste und Software-Back-Button bei der nächsten Seite und kann auch ohne NavigationPage verwendet werden
         Navigation.PushModalAsync(new Controls());
     }
+
+    private void Btn_McSend_Clicked(object sender, EventArgs e)
+    {
+        Page pg = new McSubscriberPage();
+
+        MessagingCenter.Send(this, "nachricht", "HALLO");
+
+        Navigation.PushModalAsync(pg);
+    }
 }

@@ -25,6 +25,7 @@ public partial class App : Application
         //AppShell beinhaltet die Shell-Navigation dieser App (vgl. Navi.AppShell.cs)
         MainPage = new Navi.AppShell();
 
+
     }
 
 

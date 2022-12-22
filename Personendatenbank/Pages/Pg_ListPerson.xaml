@@ -21,7 +21,8 @@
             </Border.Stroke>
 
             <ListView x:Name="LstV_Personen"
-                      SeparatorColor="Black">
+                      SeparatorColor="Black"
+                      RowHeight="{OnPlatform Android=80}">
 
                 <ListView.ItemsSource>
                     <x:Array Type="{x:Type model:Person}">

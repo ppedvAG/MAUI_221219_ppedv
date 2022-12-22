@@ -8,5 +8,7 @@
                  Spacing="10">
         <Button Text="Open Main" x:Name="Btn_Main" Clicked="Btn_Main_Clicked"/>
         <Button Text="Open Controls" x:Name="Btn_Controls" Clicked="Btn_Controls_Clicked"/>
+        
+        <Button Text="Send Message" x:Name="Btn_McSend" Clicked="Btn_McSend_Clicked"/>
     </StackLayout>
 </ContentPage>
