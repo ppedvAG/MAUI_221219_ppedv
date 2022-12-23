@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MauiKurs.MVVM.Model"
+             xmlns:vm="clr-namespace:MauiKurs.MVVM.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiKurs.MVVM.View.BeispielView"
+             Title="BeispielView">
+
+    <ContentPage.BindingContext>
+        <vm:BeipielViewModel/>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout>
+        <Entry Text="{Binding NeuerHersteller}" Placeholder="Hersteller"/>
+        <Entry Text="{Binding NeueMaxGeschwindigkeit}" Placeholder="MaxGeschwindigkeit"/>
+        <DatePicker Date="{Binding NeuesBaujahr}"/>
+
+        <Button Command="{Binding HinzufügenCmd}" Text="Hinzufügen"/>
+
+        <ListView ItemsSource="{Binding PkwListe}" x:Name="LstV_Pkws">
+
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                    EventName="ItemSelected"
+                    Command="{Binding UpdateSelecedPKW}"/>
+            </ListView.Behaviors>
+            
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type model:PKW}">
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding Hersteller}"/>
+                            <Label Text="{Binding MaxGeschwindigkeit}"/>
+                            <Label Text="{Binding Baujahr.Year}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Command="{Binding LöschenCmd}" CommandParameter="{Binding Source={x:Reference LstV_Pkws}}" Text="Löschen"/>
+    </VerticalStackLayout>
+</ContentPage>

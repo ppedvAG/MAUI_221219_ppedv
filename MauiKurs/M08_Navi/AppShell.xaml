@@ -7,6 +7,7 @@
        xmlns:navi="clr-namespace:MauiKurs.Navi"
        xmlns:flyout="clr-namespace:MauiKurs.Navi.FlyoutBsp"
        xmlns:osspez="clr-namespace:MauiKurs.Plattformspezifika"
+       xmlns:mvvm="clr-namespace:MauiKurs.MVVM.View"
        x:Class="MauiKurs.Navi.AppShell"
        Title="AppShell">
 
@@ -59,6 +60,11 @@
     <FlyoutItem Title="M11_Gestures">
         <ShellContent Route="gestures"
                       ContentTemplate="{DataTemplate local:Gestures}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="M10_MVVM">
+        <ShellContent Route="mvvm"
+                      ContentTemplate="{DataTemplate mvvm:BeispielView}"/>
     </FlyoutItem>
 
 </Shell>
