@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!--vgl. M10_MVVM\ViewModel\BeispielViewModel und M10_MVVM\Model\PKW.cs-->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:MauiKurs.MVVM.Model"
@@ -7,19 +8,27 @@
              x:Class="MauiKurs.MVVM.View.BeispielView"
              Title="BeispielView">
 
+    <!--Im View-Teil von MVVM-Projekten werden die Fenster per XAML definiert. Diese Klassen dürfen keinen Code-Behind
+    besitzen. Diese Aufgabe wird von dem entsprechenden ViewModel übernommen, welches als BindingContext des Views gesetzt
+    wird. Dies geschieht hier, im ersten Fenster des Programms, inner halb des XAML-Codes.-->
     <ContentPage.BindingContext>
         <vm:BeipielViewModel/>
     </ContentPage.BindingContext>
     
     <VerticalStackLayout>
+        <!--Die Eigenschaften werden über Kurzbindungen an den BindingContext (das ViewModel) gebunden.-->
         <Entry Text="{Binding NeuerHersteller}" Placeholder="Hersteller"/>
         <Entry Text="{Binding NeueMaxGeschwindigkeit}" Placeholder="MaxGeschwindigkeit"/>
         <DatePicker Date="{Binding NeuesBaujahr}"/>
 
+        <!--Commands ersetzen die Events. CommandParameter können beliebige zusätzliche Infos enthalten,
+            welche die Commands für ihre Ausführung benötigen-->
         <Button Command="{Binding HinzufügenCmd}" Text="Hinzufügen"/>
 
         <ListView ItemsSource="{Binding PkwListe}" x:Name="LstV_Pkws">
 
+            <!--Events, welche nicht auf einer Command-Eigenschaft abgebildet werden, müssen über ein Behavior-Objekt aus dem
+            Community-Toolkit (über NuGet) umgeleitet werden-->
             <ListView.Behaviors>
                 <toolkit:EventToCommandBehavior
                     EventName="ItemSelected"
@@ -39,6 +48,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <!--Über den CommandParameter können zusätzliche Objecte (hier das ListView) an die Commands übermittelt werden-->
         <Button Command="{Binding LöschenCmd}" CommandParameter="{Binding Source={x:Reference LstV_Pkws}}" Text="Löschen"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -3,37 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:Personendatenbank.Model"
              xmlns:conv="clr-namespace:Personendatenbank.Converter"
+             xmlns:vm="clr-namespace:Personendatenbank.ViewModel"
              x:Class="Personendatenbank.Pages.Pg_ListPerson"
              Title="Personenübersicht">
-    
+
     <ContentPage.Resources>
         <conv:BoolToVerheiratetStringConverter x:Key="bool2string"/>
     </ContentPage.Resources>
+
+    <!--Lab 10-->
+    <ContentPage.BindingContext>
+        <vm:ListViewModel/>
+    </ContentPage.BindingContext>
 
 
     <StackLayout Padding="5"
                  Spacing="10">
         <Border StrokeThickness="1"
                 VerticalOptions="FillAndExpand">
-            
+
             <Border.Stroke>
                 <SolidColorBrush Color="Black"/>
             </Border.Stroke>
 
             <ListView x:Name="LstV_Personen"
                       SeparatorColor="Black"
-                      RowHeight="{OnPlatform Android=80}">
+                      RowHeight="{OnPlatform Android=80}"
+                      ItemsSource="{Binding PersonList}">
 
-                <ListView.ItemsSource>
+                <!--<ListView.ItemsSource>
                     <x:Array Type="{x:Type model:Person}">
                         <model:Person Name="Anna Nass" IsMarried="True" Gender="Weiblich" Birthdate="12/22/2001"/>
                         <model:Person Name="Rainer Zufall" IsMarried="False" Gender="Männlich" Birthdate="4/12/1980"/>
                     </x:Array>
-                </ListView.ItemsSource>
+                </ListView.ItemsSource>-->
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>                            
+                        <ViewCell>
                             <StackLayout Padding="10">
                                 <StackLayout.Resources>
                                     <Style TargetType="Label">
@@ -56,6 +63,8 @@
             </ListView>
         </Border>
         <Button Text="Person löschen"
-                x:Name="Btn_Loeschen"/>
-    </StackLayout>
+                x:Name="Btn_Loeschen"
+                Command="{Binding DeleteCmd}"
+                CommandParameter="{Binding Source={x:Reference LstV_Personen}, Path=SelectedItem}"/>
+        </StackLayout>
 </ContentPage>

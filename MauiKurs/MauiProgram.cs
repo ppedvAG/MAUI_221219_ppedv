@@ -16,6 +16,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+			//Aktivierung des Community-Toolkits (wurde über NuGet installiert)
 			.UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
 			{
